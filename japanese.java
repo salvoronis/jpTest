@@ -8,29 +8,51 @@ import java.io.IOException;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 
 public class japanese extends JFrame{
 	static LinkedList<Slova> slovv = new LinkedList<>();
+	static LinkedList<Slova> slovosh = new LinkedList<>();
 	public static void main (String [] args){
 		japanese jp = new japanese();
 		jp.setVisible(true);
 	}
 
 
-	public static void reader(String put){
+	public static void reader(String put) throws Exception{
 		LinkedList<Slova> slova = new LinkedList<>();
 		slovv = slova;
 		try{
+			Writer unicodeFileWriter = new OutputStreamWriter(new FileOutputStream("a.txt"), "UTF-8");
 			if(new File(put).canRead()){
 				Path path = Paths.get(put);
 				Scanner scan = new Scanner(path);
 				while(scan.hasNext()){
 					String line = scan.nextLine();
 					if(line.contains("<Slova ")){
-						String imi = line.substring(line.indexOf("=") + 2, line.lastIndexOf(" ") - 1);
-						String yomi = line.substring(line.lastIndexOf("=") + 2, line.length() - 3);
-						slova.add(new Slova(imi, yomi));
+						String[] elem = line.split(" ");
+						String imi = "abstractt";
+						String yomi = "abstractt";
+						String kanji = "abstractt";
+						for (String a : elem){
+							if (a.contains("imi")){
+								imi = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
+							}
+							//else {break;}
+							else if (a.contains("yomi")){
+								yomi = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
+							}
+							//else {continue;}
+							else if (a.contains("kanji")){
+								kanji = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
+							}
+							else {continue;}
+						}
+						slova.add(new Slova(imi, yomi, kanji));
+						slovosh.add(new Slova(imi, yomi, kanji));
 					}
 				}
 			}
@@ -58,7 +80,7 @@ public class japanese extends JFrame{
 	JLabel chtenie = new JLabel("Уровень -> *lvl*");
 	int kolosh = 0;
 	int vsego;
-	static String put = "slova.xml";
+	static String put;
 
 	public japanese(){
 		super("Тест иероглифы");
@@ -85,7 +107,9 @@ public class japanese extends JFrame{
     	n4.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                 put = "slova4.xml";
-                reader(put);
+                try{
+                	reader(put);
+            	}catch(Exception ex){}
                 label.setText(slovv.getFirst().imi);
 				chtenie.setText(slovv.getFirst().yomi);
 				slovv.removeFirst();
@@ -94,7 +118,9 @@ public class japanese extends JFrame{
         n5.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                 put = "slova5.xml";
-                reader(put);
+                try{
+                	reader(put);
+                } catch(Exception ex){};
                 label.setText(slovv.getFirst().imi);
 				chtenie.setText(slovv.getFirst().yomi);
 				slovv.removeFirst();
@@ -102,8 +128,10 @@ public class japanese extends JFrame{
         });
         n3.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
-                put = "slova3.xml";
-                reader(put);
+            	put = "slova3.xml";
+            	try{
+            		reader(put);
+                }catch(Exception ex){}
                 label.setText(slovv.getFirst().imi);
 				chtenie.setText(slovv.getFirst().yomi);
 				slovv.removeFirst();
@@ -112,7 +140,9 @@ public class japanese extends JFrame{
         n2.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                 put = "slova2.xml";
-                reader(put);
+                try{
+                	reader(put);
+                } catch(Exception ex){}
                 System.out.println(slovv);
                 label.setText(slovv.getFirst().imi);
 				chtenie.setText(slovv.getFirst().yomi);
@@ -138,13 +168,21 @@ public class japanese extends JFrame{
 				slovv.removeFirst();
 			}
 			else {
-				String message = "Количество ошибок: " + kolosh + " из " + numb;
+				String message = "Количество ошибок: " + kolosh + " из " + numb + " ";
+				for (Slova a : slovosh){
+					message += a.getKanji() + " ";
+				}
+				String[] mess = message.split(" ");
+				for (int i = 4; i < mess.length; i+=5){
+					mess[i] = mess[i] + "\n";
+				}
+				slovosh.clear();
 				kolosh = 0;
 				label.setText("Выберите уровень");
 				chtenie.setText("Уровень -> *lvl*");
 				JOptionPane.showMessageDialog(null,
-		    		message,
-		    		"Output",
+		    		String.join(" ",mess),
+		    		"Результат",
 		    	    JOptionPane.PLAIN_MESSAGE);
 			}
 		}
@@ -159,12 +197,20 @@ public class japanese extends JFrame{
 			}
 			else {
 				kolosh = kolosh + 1;
-				String message = "Количество ошибок: " + kolosh + " из " + numb;
+				String message = "Количество ошибок: " + kolosh + " из " + numb + " ";
+				for (Slova a : slovosh){
+					message += a.getKanji() + " ";
+				}
+				String[] mess = message.split(" ");
+				for (int i = 4; i < mess.length; i+=5){
+					mess[i] = mess[i] + "\n";
+				}
+				slovosh.clear();
 				kolosh = 0;
 				label.setText("Выберите уровень");
 				chtenie.setText("Уровень -> *lvl*");
 				JOptionPane.showMessageDialog(null,
-		    		message,
+		    		String.join(" ",mess),
 		    		"Output",
 		    	    JOptionPane.PLAIN_MESSAGE);
 			}
@@ -175,13 +221,22 @@ public class japanese extends JFrame{
 class Slova implements Comparable<Slova>{
 	String imi;
 	String yomi;
-	public Slova(String imi, String yomi){
+	String kanji;
+	public Slova(String imi, String yomi, String kanji){
 		this.imi = imi;
 		this.yomi = yomi;
+		this.kanji = kanji;
+	}
+	public String getKanji(){
+		return this.kanji;
 	}
 	@Override
 	public int compareTo(Slova odin){
 		int i = (int)Math.round(Math.random()*50 - 25);
 		return i;
+	}
+	@Override
+	public String toString(){
+		return imi;
 	}
 }
