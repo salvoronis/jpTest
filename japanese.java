@@ -1,16 +1,13 @@
 import java.util.LinkedList;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.io.File;
 import java.util.Scanner;
 import java.util.Collections;
 import java.io.IOException;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 
 public class japanese extends JFrame{
@@ -26,37 +23,35 @@ public class japanese extends JFrame{
 		LinkedList<Slova> slova = new LinkedList<>();
 		slovv = slova;
 		try{
-			Writer unicodeFileWriter = new OutputStreamWriter(new FileOutputStream("a.txt"), "UTF-8");
-			if(new File(put).canRead()){
-				Path path = Paths.get(put);
-				Scanner scan = new Scanner(path);
-				while(scan.hasNext()){
-					String line = scan.nextLine();
-					if(line.contains("<Slova ")){
-						String[] elem = line.split(" ");
-						String imi = "abstractt";
-						String yomi = "abstractt";
-						String kanji = "abstractt";
-						for (String a : elem){
-							if (a.contains("imi")){
-								imi = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
-							}
-							//else {break;}
-							else if (a.contains("yomi")){
-								yomi = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
-							}
-							//else {continue;}
-							else if (a.contains("kanji")){
-								kanji = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
-							}
-							else {continue;}
+			Reader unicodeFileReader = new InputStreamReader(new FileInputStream(put), "UTF-8");
+			StringBuilder out = new StringBuilder();
+			char[] buf = new char[5000];
+			int rsz = unicodeFileReader.read(buf, 0, buf.length);
+			out.append(buf, 0, rsz);
+			String[] opa = out.toString().split("\n");
+			for(int i = 0; i<opa.length ; i++){
+				String line = opa[i];
+				if(line.contains("<Slova ")){
+					String[] elem = line.split(" ");
+					String imi = "abstractt";
+					String yomi = "abstractt";
+					String kanji = "abstractt";
+					for (String a : elem){
+						if (a.contains("imi")){
+							imi = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
 						}
-						slova.add(new Slova(imi, yomi, kanji));
-						slovosh.add(new Slova(imi, yomi, kanji));
+						else if (a.contains("yomi")){
+							yomi = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
+						}
+						else if (a.contains("kanji")){
+							kanji = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
+						}
+						else {continue;}
 					}
+					slova.add(new Slova(imi, yomi, kanji));
+					slovosh.add(new Slova(imi, yomi, kanji));
 				}
 			}
-			else{System.out.println("Дайте права для чтения файла");}
 		}
 		catch(IOException e){
 			System.out.println("не найден файл");
