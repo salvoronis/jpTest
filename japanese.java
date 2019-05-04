@@ -21,7 +21,8 @@ public class japanese extends JFrame{
 
 	public static void reader(String put) throws Exception{
 		LinkedList<Slova> slova = new LinkedList<>();
-		slovv = slova;
+		slovv.clear();
+		slovosh.clear();
 		try{
 			Reader unicodeFileReader = new InputStreamReader(new FileInputStream(put), "UTF-8");
 			StringBuilder out = new StringBuilder();
@@ -49,7 +50,6 @@ public class japanese extends JFrame{
 						else {continue;}
 					}
 					slova.add(new Slova(imi, yomi, kanji));
-					slovosh.add(new Slova(imi, yomi, kanji));
 				}
 			}
 		}
@@ -57,7 +57,8 @@ public class japanese extends JFrame{
 			System.out.println("не найден файл");
 		}
 		Collections.sort(slova);
-		slovv = slova;
+		slovv.addAll(slova);
+		slovosh.addAll(slova);
 		numb = slovv.size();
 	}
 	static int numb;
@@ -168,7 +169,7 @@ public class japanese extends JFrame{
 					message += a.getKanji() + " ";
 				}
 				String[] mess = message.split(" ");
-				for (int i = 4; i < mess.length; i+=5){
+				for (int i = 4; i < mess.length; i+=12){
 					mess[i] = mess[i] + "\n";
 				}
 				slovosh.clear();
@@ -197,7 +198,7 @@ public class japanese extends JFrame{
 					message += a.getKanji() + " ";
 				}
 				String[] mess = message.split(" ");
-				for (int i = 4; i < mess.length; i+=5){
+				for (int i = 4; i < mess.length; i+=12){
 					mess[i] = mess[i] + "\n";
 				}
 				slovosh.clear();
