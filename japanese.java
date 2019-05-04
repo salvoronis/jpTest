@@ -15,7 +15,8 @@ import java.io.File;
 public class japanese extends JFrame {
 	static LinkedList<Slova> slovv = new LinkedList<>();
 	static LinkedList<Slova> slovosh = new LinkedList<>();
-	Font msgothic = new Font("Yu Gothic UI Semilight", /*Font.ITALIC*/0, 15);
+	//Font msgothic = new Font("Yu Gothic UI Semilight", /*Font.ITALIC*/0, 15);
+	Font font = new Font("Calibri", 0, 15);
 	Font japFt;
 	public static void main (String [] args){
 		japanese jp = new japanese();
@@ -91,10 +92,9 @@ public class japanese extends JFrame {
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	this.setJMenuBar(menuBar);
     	try{
-    		japFt = Font.createFont(Font.TRUETYPE_FONT, new File("APJapanesefont.ttf"));
-    		japFt = japFt.deriveFont(0, 22);
+    		japFt = Font.createFont(Font.TRUETYPE_FONT, new File("yugothil.ttf"));
+    		japFt = japFt.deriveFont(Font.BOLD, 18);
     	}catch(Exception e){e.printStackTrace();}
-    	chtenie.setFont(msgothic);
 
     	//label.setFont(msgothic);
 
@@ -119,6 +119,7 @@ public class japanese extends JFrame {
             	}catch(Exception ex){}
                 label.setText(slovv.getFirst().imi);
 				chtenie.setText(slovv.getFirst().yomi);
+				chtenie.setFont(japFt);
 				slovv.removeFirst();
             }           
         });
@@ -130,6 +131,7 @@ public class japanese extends JFrame {
                 } catch(Exception ex){};
                 label.setText(slovv.getFirst().imi);
 				chtenie.setText(slovv.getFirst().yomi);
+				chtenie.setFont(japFt);
 				slovv.removeFirst();
             }           
         });
@@ -141,6 +143,7 @@ public class japanese extends JFrame {
                 }catch(Exception ex){}
                 label.setText(slovv.getFirst().imi);
 				chtenie.setText(slovv.getFirst().yomi);
+				chtenie.setFont(japFt);
 				slovv.removeFirst();
             }           
         });
@@ -153,6 +156,7 @@ public class japanese extends JFrame {
                 System.out.println(slovv);
                 label.setText(slovv.getFirst().imi);
 				chtenie.setText(slovv.getFirst().yomi);
+				chtenie.setFont(japFt);
 				slovv.removeFirst();
             }           
         });
@@ -161,6 +165,10 @@ public class japanese extends JFrame {
 	    container.setLayout(new GridLayout(2,2));
 	    container.add(label);
 	    container.add(chtenie);
+	    label.setFont(font);
+	    chtenie.setFont(font);
+	    button.setFont(font);
+	    button2.setFont(font);
 
 	    button.addActionListener(new ButtonEventListener());
 	    button2.addActionListener(new ButtonEventListener2());
@@ -185,11 +193,15 @@ public class japanese extends JFrame {
 				}
 				String[] viviv = String.join(" ",mess).split("\n");
 				JLabel[] vivods = new JLabel[viviv.length];
-				for(int i = 0; i<viviv.length; i++){
+				JLabel ftfirst = new JLabel(viviv[0]);
+				vivods[0] = ftfirst;
+				ftfirst.setFont(font);
+				for(int i = 1; i<viviv.length; i++){
 					JLabel ft = new JLabel(viviv[i]);
 					ft.setFont(japFt);
 					vivods[i] = ft;
 				}
+				chtenie.setFont(font);
 				slovosh.clear();
 				kolosh = 0;
 				label.setText("Выберите уровень");
@@ -223,7 +235,7 @@ public class japanese extends JFrame {
 				JLabel[] vivods = new JLabel[viviv.length];
 				for(int i = 0; i<viviv.length; i++){
 					JLabel ft = new JLabel(viviv[i]);
-					ft.setFont(msgothic);
+					ft.setFont(japFt);
 					vivods[i] = ft;
 				}
 				slovosh.clear();
