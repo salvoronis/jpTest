@@ -8,11 +8,13 @@ import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.awt.Font;
 
 
 public class japanese extends JFrame{
 	static LinkedList<Slova> slovv = new LinkedList<>();
 	static LinkedList<Slova> slovosh = new LinkedList<>();
+	Font msgothic = new Font("MS Gothic", /*Font.ITALIC*/0, 15);
 	public static void main (String [] args){
 		japanese jp = new japanese();
 		jp.setVisible(true);
@@ -86,6 +88,8 @@ public class japanese extends JFrame{
     	this.setBounds(locationX, locationY,300,200);
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	this.setJMenuBar(menuBar);
+    	chtenie.setFont(msgothic);
+    	label.setFont(msgothic);
 
     	menuBar.add(fileMenu);
     	menuBar.add(exitM);
@@ -172,12 +176,19 @@ public class japanese extends JFrame{
 				for (int i = 4; i < mess.length; i+=12){
 					mess[i] = mess[i] + "\n";
 				}
+				String[] viviv = String.join(" ",mess).split("\n");
+				JLabel[] vivods = new JLabel[viviv.length];
+				for(int i = 0; i<viviv.length; i++){
+					JLabel ft = new JLabel(viviv[i]);
+					ft.setFont(msgothic);
+					vivods[i] = ft;
+				}
 				slovosh.clear();
 				kolosh = 0;
 				label.setText("Выберите уровень");
 				chtenie.setText("Уровень -> *lvl*");
 				JOptionPane.showMessageDialog(null,
-		    		String.join(" ",mess),
+		    		vivods,
 		    		"Результат",
 		    	    JOptionPane.PLAIN_MESSAGE);
 			}
@@ -201,13 +212,20 @@ public class japanese extends JFrame{
 				for (int i = 4; i < mess.length; i+=12){
 					mess[i] = mess[i] + "\n";
 				}
+				String[] viviv = String.join(" ",mess).split("\n");
+				JLabel[] vivods = new JLabel[viviv.length];
+				for(int i = 0; i<viviv.length; i++){
+					JLabel ft = new JLabel(viviv[i]);
+					ft.setFont(msgothic);
+					vivods[i] = ft;
+				}
 				slovosh.clear();
 				kolosh = 0;
 				label.setText("Выберите уровень");
 				chtenie.setText("Уровень -> *lvl*");
 				JOptionPane.showMessageDialog(null,
-		    		String.join(" ",mess),
-		    		"Output",
+		    		vivods,
+		    		"Результат",
 		    	    JOptionPane.PLAIN_MESSAGE);
 			}
 		}
