@@ -9,12 +9,14 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.awt.Font;
+import java.io.File;
 
 
-public class japanese extends JFrame{
+public class japanese extends JFrame {
 	static LinkedList<Slova> slovv = new LinkedList<>();
 	static LinkedList<Slova> slovosh = new LinkedList<>();
-	Font msgothic = new Font("MS Gothic", /*Font.ITALIC*/0, 15);
+	Font msgothic = new Font("Yu Gothic UI Semilight", /*Font.ITALIC*/0, 15);
+	Font japFt;
 	public static void main (String [] args){
 		japanese jp = new japanese();
 		jp.setVisible(true);
@@ -88,8 +90,13 @@ public class japanese extends JFrame{
     	this.setBounds(locationX, locationY,300,200);
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	this.setJMenuBar(menuBar);
+    	try{
+    		japFt = Font.createFont(Font.TRUETYPE_FONT, new File("APJapanesefont.ttf"));
+    		japFt = japFt.deriveFont(0, 22);
+    	}catch(Exception e){e.printStackTrace();}
     	chtenie.setFont(msgothic);
-    	label.setFont(msgothic);
+
+    	//label.setFont(msgothic);
 
     	menuBar.add(fileMenu);
     	menuBar.add(exitM);
@@ -180,7 +187,7 @@ public class japanese extends JFrame{
 				JLabel[] vivods = new JLabel[viviv.length];
 				for(int i = 0; i<viviv.length; i++){
 					JLabel ft = new JLabel(viviv[i]);
-					ft.setFont(msgothic);
+					ft.setFont(japFt);
 					vivods[i] = ft;
 				}
 				slovosh.clear();
