@@ -12,17 +12,16 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.awt.Font;
 import java.io.File;
+import java.util.NoSuchElementException;
 
 
 public class Japanese extends JFrame {
 	static LinkedList<Slova> slovv = new LinkedList<>();
 	static LinkedList<Slova> slovosh = new LinkedList<>();
-	//Font msgothic = new Font("Yu Gothic UI Semilight", /*Font.ITALIC*/0, 15);
-	Font font = new Font("Calibri", 0, 15);
-	Font japFt;
+	public static Font font = new Font("Calibri", 0, 15);
+	public static Font japFt;
 	public static void main (String [] args){
 		Japanese jp = new Japanese();
-		//UserEditMenu usermenu = new UserEditMenu();
 		jp.setVisible(true);
 	}
 
@@ -43,24 +42,9 @@ public class Japanese extends JFrame {
 				if(line.contains("<Slova ")){
 					String[] elem = line.split(" ");
 					String[] elemnew = line.split("\"");
-					/*for(String a : elemnew){
-						System.out.println(a);
-					}*/
 					String imi = "abstractt";
 					String yomi = "abstractt";
 					String kanji = "abstractt";
-					/*for (String a : elem){
-						if (a.contains("imi")){
-							imi = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
-						}
-						else if (a.contains("yomi")){
-							yomi = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
-						}
-						else if (a.contains("kanji")){
-							kanji = a.substring(a.indexOf("=") + 2, a.lastIndexOf("\""));
-						}
-						else {continue;}
-					}*/
 					imi = elemnew[1];
 					yomi = elemnew[3];
 					kanji = elemnew[5];
@@ -79,6 +63,8 @@ public class Japanese extends JFrame {
 	static int numb;
 	JMenuBar menuBar = new JMenuBar();
 	JMenu fileMenu = new JMenu("Уровень");
+	JMenu standart = new JMenu("standart");
+	JMenu settings = new JMenu("Настройки");
 	JMenu exitM = new JMenu("Exit");
 	JButton button = new JButton("Дальше");
 	JButton button2 = new JButton("Не верно");
@@ -87,7 +73,11 @@ public class Japanese extends JFrame {
 	JMenuItem n4 = new JMenuItem("N4");
 	JMenuItem n3 = new JMenuItem("N3");
 	JMenuItem n2 = new JMenuItem("N2");
-	JMenuItem userrmenu = new JMenuItem("menu");
+	JMenuItem pn5 = new JMenuItem("N5");
+	JMenuItem pn4 = new JMenuItem("N4");
+	JMenuItem pn3 = new JMenuItem("N3");
+	JMenuItem pn2 = new JMenuItem("N2");
+	JMenuItem userrmenu = new JMenuItem("Персональзировать уровни");
 	JLabel label = new JLabel("<html>Выберите уровень</html>", JLabel.CENTER);
 	JLabel chtenie = new JLabel("Уровень -> *lvl*");
 	int kolosh = 0;
@@ -115,13 +105,19 @@ public class Japanese extends JFrame {
     	//label.setFont(msgothic);
 
     	menuBar.add(fileMenu);
+    	menuBar.add(settings);
     	menuBar.add(exitM);
     	exitM.add(exit);
-    	fileMenu.add(n5);
-    	fileMenu.add(n4);
-    	fileMenu.add(n3);
-    	fileMenu.add(n2);
-    	fileMenu.add(userrmenu);
+    	fileMenu.add(standart);
+    	standart.add(n5);
+    	standart.add(n4);
+    	standart.add(n3);
+    	standart.add(n2);
+    	fileMenu.add(pn5);
+    	fileMenu.add(pn4);
+    	fileMenu.add(pn3);
+    	fileMenu.add(pn2);
+    	settings.add(userrmenu);
 
     	exit.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
@@ -138,50 +134,49 @@ public class Japanese extends JFrame {
     	n4.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                 put = "japanese/slova4.xml";
-                try{
-                	reader(put);
-            	}catch(Exception ex){}
-                label.setText(slovv.getFirst().imi);
-				chtenie.setText(slovv.getFirst().yomi);
-				chtenie.setFont(japFt);
-				slovv.removeFirst();
+                actformenu(put);
             }           
         });
         n5.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                 put = "japanese/slova5.xml";
-                try{
-                	reader(put);
-                } catch(Exception ex){};
-                label.setText(slovv.getFirst().imi);
-				chtenie.setText(slovv.getFirst().yomi);
-				chtenie.setFont(japFt);
-				slovv.removeFirst();
+                actformenu(put);
             }           
         });
         n3.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
             	put = "japanese/slova3.xml";
-            	try{
-            		reader(put);
-                }catch(Exception ex){}
-                label.setText(slovv.getFirst().imi);
-				chtenie.setText(slovv.getFirst().yomi);
-				chtenie.setFont(japFt);
-				slovv.removeFirst();
+            	actformenu(put);
             }           
         });
         n2.addActionListener(new ActionListener() {           
             public void actionPerformed(ActionEvent e) {
                 put = "japanese/slova2.xml";
-                try{
-                	reader(put);
-                } catch(Exception ex){}
-                System.out.println(slovv);
-                label.setText(slovv.getFirst().imi);
-				chtenie.setText(slovv.getFirst().yomi);
-				chtenie.setFont(japFt);
-				slovv.removeFirst();
+                actformenu(put);
+            }           
+        });
+        pn4.addActionListener(new ActionListener() {           
+            public void actionPerformed(ActionEvent e) {
+                put = "japanese/userEditor4.xml";
+                actformenu(put);
+            }           
+        });
+        pn5.addActionListener(new ActionListener() {           
+            public void actionPerformed(ActionEvent e) {
+                put = "japanese/userEditor5.xml";
+                actformenu(put);
+            }           
+        });
+        pn3.addActionListener(new ActionListener() {           
+            public void actionPerformed(ActionEvent e) {
+            	put = "japanese/userEditor3.xml";
+            	actformenu(put);
+            }           
+        });
+        pn2.addActionListener(new ActionListener() {           
+            public void actionPerformed(ActionEvent e) {
+                put = "japanese/userEditor2.xml";
+                actformenu(put);
             }           
         });
 
@@ -199,6 +194,19 @@ public class Japanese extends JFrame {
 	    container.add(button);
 	    container.add(button2);
 	}
+	void actformenu(String option){
+        	//put = "japanese/slova2.xml";
+                try{
+                	reader(option);
+                } catch(Exception ex){}
+                System.out.println(slovv);
+                try{
+                	label.setText(slovv.getFirst().imi);
+					chtenie.setText(slovv.getFirst().yomi);
+					chtenie.setFont(japFt);
+					slovv.removeFirst();
+				}catch(NoSuchElementException exex){label.setText("nea");}
+        }
 	class ButtonEventListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (slovv.size() != 0){
@@ -286,6 +294,12 @@ class Slova implements Comparable<Slova>{
 	}
 	public String getKanji(){
 		return this.kanji;
+	}
+	public String getImi(){
+		return this.imi;
+	}
+	public String getYomi(){
+		return this.yomi;
 	}
 	@Override
 	public int compareTo(Slova odin){
