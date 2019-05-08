@@ -1,6 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Slova>
-<Slova imi="debil" yomi="ryou"/>
-<Slova imi="debil" yomi="gan"/>
-<Slova imi="debil" yomi="kyuu"/>
+<Slova imi="один" yomi="いち" kanji="一"/>
+<Slova imi="семь" yomi="なな" kanji="七"/>
+<Slova imi="10 тысяч" yomi="まん" kanji="万"/>
+<Slova imi="три" yomi="さん" kanji="三"/>
+<Slova imi="верх" yomi="じょう" kanji="上"/>
+<Slova imi="низ" yomi="か" kanji="下"/>
+<Slova imi="середина" yomi="ちゅう" kanji="中"/>
+<Slova imi="девять" yomi="きゅう" kanji="九"/>
+<Slova imi="два" yomi="に" kanji="二"/>
+<Slova imi="пять" yomi="ご" kanji="五"/>
+<Slova imi="человек" yomi="じん" kanji="人"/>
+<Slova imi="сейчас" yomi="こん" kanji="今"/>
+<Slova imi="отдых, отдыхать" yomi="きゅう" kanji="休"/>
+<Slova imi="встреча" yomi="かい" kanji="会"/>
+<Slova imi="проживать" yomi="じゅう" kanji="住"/>
+<Slova imi="что?" yomi="か" kanji="何"/>
+<Slova imi="впереди, кончик, острие" yomi="せん" kanji="先"/>
+<Slova imi="входить" yomi="にゅう" kanji="入"/>
+<Slova imi="восемь" yomi="はち" kanji="八"/>
+<Slova imi="шесть" yomi="ろく" kanji="六"/>
+<Slova imi="иена" yomi="えん" kanji="円"/>
+<Slova imi="выходить" yomi="しゅつ" kanji="出"/>
+<Slova imi="доля, минута" yomi="ぶん" kanji="分"/>
+<Slova imi="перед впереди" yomi="ぜん" kanji="前"/>
+<Slova imi="север" yomi="ほく" kanji="北"/>
+<Slova imi="десять" yomi="じゅう" kanji="十"/>
+<Slova imi="тысяча" yomi="せん" kanji="千"/>
+<Slova imi="полдень" yomi="ご" kanji="午"/>
+<Slova imi="половина" yomi="はん" kanji="半"/>
+<Slova imi="юг" yomi="なん" kanji="南"/>
+<Slova imi="друг" yomi="ゆう" kanji="友"/>
+<Slova imi="рот" yomi="こう" kanji="口"/>
+<Slova imi="старый" yomi="こ" kanji="古"/>
+<Slova imi="правый" yomi="う" kanji="右"/>
+<Slova imi="имя" yomi="めい" kanji="名"/>
+<Slova imi="четыре" yomi="し" kanji="四"/>
+<Slova imi="страна" yomi="こく" kanji="国"/>
+<Slova imi="земля, почва" yomi="ど" kanji="土"/>
+<Slova imi="вечер" yomi="せき" kanji="夕"/>
+<Slova imi="вне" yomi="がい" kanji="外"/>
+<Slova imi="много" yomi="た" kanji="多"/>
+<Slova imi="ночь" yomi="や" kanji="夜"/>
+<Slova imi="большой" yomi="だい" kanji="大"/>
+<Slova imi="небо" yomi="てん" kanji="天"/>
+<Slova imi="женщина" yomi="じょ" kanji="女"/>
+<Slova imi="ребенок" yomi="し" kanji="子"/>
+<Slova imi="учение, знание, наука" yomi="がく" kanji="学"/>
+<Slova imi="дешевый, спокойный" yomi="あん" kanji="安"/>
+<Slova imi="дом" yomi="か" kanji="家"/>
+<Slova imi="маленький" yomi="しょう" kanji="小"/>
+<Slova imi="мало, немножко" yomi="しょう" kanji="少"/>
+<Slova imi="гора" yomi="さん" kanji="山"/>
+<Slova imi="река" yomi="せん" kanji="川"/>
+<Slova imi="левый" yomi="さ" kanji="左"/>
+<Slova imi="год" yomi="ねん" kanji="年"/>
+<Slova imi="широкий" yomi="こう" kanji="広"/>
+<Slova imi="магазин" yomi="てん" kanji="店"/>
+<Slova imi="после, потом, позади" yomi="ご" kanji="後"/>
+<Slova imi="думать" yomi="し" kanji="思"/>
+<Slova imi="рука" yomi="しゅ" kanji="手"/>
+<Slova imi="новый" yomi="しん" kanji="新"/>
+<Slova imi="день" yomi="にち" kanji="日"/>
+<Slova imi="обед" yomi="ちゅう" kanji="昼"/>
+<Slova imi="время, час" yomi="じ" kanji="時"/>
+<Slova imi="писать" yomi="しょ" kanji="書"/>
+<Slova imi="месяц" yomi="げつ" kanji="月"/>
+<Slova imi="иметься, быть" yomi="ゆう" kanji="有"/>
+<Slova imi="утро" yomi="ちょう" kanji="朝"/>
+<Slova imi="дерево" yomi="もく" kanji="木"/>
+<Slova imi="книга" yomi="はん" kanji="本"/>
+<Slova imi="приходить" yomi="らい" kanji="来"/>
+<Slova imi="восток" yomi="とう" kanji="東"/>
+<Slova imi="школа" yomi="こう" kanji="校"/>
+<Slova imi="ходить(пешком)" yomi="ほ" kanji="歩"/>
+<Slova imi="мама" yomi="ぼ" kanji="母"/>
+<Slova imi="каждый" yomi="まい" kanji="毎"/>
+<Slova imi="дух, атмосфера" yomi="き" kanji="気"/>
+<Slova imi="вода" yomi="すい" kanji="水"/>
+<Slova imi="огонь" yomi="か" kanji="火"/>
+<Slova imi="папа" yomi="ふ" kanji="父"/>
+<Slova imi="жизнь, жить, рождаться" yomi="せい" kanji="生"/>
+<Slova imi="мужчина" yomi="だん" kanji="男"/>
+<Slova imi="белый" yomi="はく" kanji="白"/>
+<Slova imi="сто" yomi="ひゃく" kanji="百"/>
+<Slova imi="глаз" yomi="もく" kanji="目"/>
+<Slova imi="знать" yomi="ち" kanji="知"/>
+<Slova imi="фирма, синтоистское святилище" yomi="しゃ" kanji="社"/>
+<Slova imi="я" yomi="し" kanji="私"/>
+<Slova imi="пустота, небо" yomi="くう" kanji="空"/>
+<Slova imi="стоять" yomi="りつ" kanji="立"/>
+<Slova imi="бумага" yomi="し" kanji="紙"/>
+<Slova imi="ухо" yomi="じ" kanji="耳"/>
+<Slova imi="слышать, спрашивать" yomi="ぶん" kanji="聞"/>
+<Slova imi="цветок" yomi="か" kanji="花"/>
+<Slova imi="идти" yomi="こう" kanji="行"/>
+<Slova imi="Запад" yomi="せい" kanji="西"/>
+<Slova imi="видеть" yomi="けん" kanji="見"/>
+<Slova imi="слово, говорить" yomi="げん" kanji="言"/>
+<Slova imi="разговаривать, разговор, беседа" yomi="わ" kanji="話"/>
+<Slova imi="язык, рассказывать" yomi="ご" kanji="語"/>
+<Slova imi="читать" yomi="どく" kanji="読"/>
+<Slova imi="покупать" yomi="ばい" kanji="買"/>
+<Slova imi="красный" yomi="せき" kanji="赤"/>
+<Slova imi="бехать, ехать(о машине)" yomi="そう" kanji="走"/>
+<Slova imi="нога" yomi="そく" kanji="足"/>
+<Slova imi="машина" yomi="しゃ" kanji="車"/>
+<Slova imi="близкий" yomi="きん" kanji="近"/>
+<Slova imi="неделя" yomi="しゅう" kanji="週"/>
+<Slova imi="дорога" yomi="どう" kanji="道"/>
+<Slova imi="золото" yomi="きん" kanji="金"/>
+<Slova imi="серебро" yomi="ぎん" kanji="銀"/>
+<Slova imi="длинный" yomi="ちょう" kanji="長"/>
+<Slova imi="интервал, промежуток" yomi="かん" kanji="間"/>
+<Slova imi="дождь" yomi="う" kanji="雨"/>
+<Slova imi="электричество" yomi="でん" kanji="電"/>
+<Slova imi="еда, есть" yomi="しょく" kanji="食"/>
+<Slova imi="пить" yomi="いん" kanji="飲"/>
+<Slova imi="станция" yomi="えき" kanji="駅"/>
+<Slova imi="высокий, дорогой" yomi="こう" kanji="高"/>
+<Slova imi="рыба" yomi="ぎょ" kanji="魚"/>
 </Slova>
