@@ -33,7 +33,7 @@ public class Japanese extends JFrame {
 		try{
 			Reader unicodeFileReader = new InputStreamReader(new FileInputStream(put), "UTF-8");
 			StringBuilder out = new StringBuilder();
-			char[] buf = new char[5000];
+			char[] buf = new char[10000];
 			int rsz = unicodeFileReader.read(buf, 0, buf.length);
 			out.append(buf, 0, rsz);
 			String[] opa = out.toString().split("\n");
@@ -48,6 +48,7 @@ public class Japanese extends JFrame {
 					imi = elemnew[1];
 					yomi = elemnew[3];
 					kanji = elemnew[5];
+					System.out.println(imi + " " + yomi + " " + kanji);
 					slova.add(new Slova(imi, yomi, kanji));
 				}
 			}
@@ -196,6 +197,7 @@ public class Japanese extends JFrame {
 	}
 	void actformenu(String option){
         	//put = "japanese/slova2.xml";
+		//System.out.println(option);
                 try{
                 	reader(option);
                 } catch(Exception ex){}
@@ -205,7 +207,7 @@ public class Japanese extends JFrame {
 					chtenie.setText(slovv.getFirst().yomi);
 					chtenie.setFont(japFt);
 					slovv.removeFirst();
-				}catch(NoSuchElementException exex){label.setText("nea");}
+				}catch(NoSuchElementException exex){label.setText("nea");exex.printStackTrace();}
         }
 	class ButtonEventListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

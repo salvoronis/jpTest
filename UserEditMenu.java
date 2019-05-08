@@ -88,7 +88,7 @@ public class UserEditMenu extends JFrame{
 		try{
 			Reader unicodeFileReader = new InputStreamReader(new FileInputStream(put), "UTF-8");
 			StringBuilder out = new StringBuilder();
-			char[] buf = new char[5000];
+			char[] buf = new char[10000];
 			int rsz = unicodeFileReader.read(buf, 0, buf.length);
 			out.append(buf, 0, rsz);
 			String[] opa = out.toString().split("\n");
